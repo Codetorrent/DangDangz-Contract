@@ -20,6 +20,8 @@ contract DangDangz is ERC1155, ERC1155URIStorage, Ownable {
 
     // 토큰별 메타데이터 매핑
     function setURI(uint256 _tokenId, string memory _tokenURI) public onlyOwner {
+        // 토큰별 메타데이터는 한번만 설정 가능
+        require(keccak256(abi.encodePacked(uri(_tokenId))) == keccak256(abi.encodePacked("")), "You can only set it up once");
         _setURI(_tokenId, _tokenURI);
     }
 
