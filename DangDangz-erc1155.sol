@@ -31,9 +31,9 @@ contract DangDangz is ERC1155, ERC1155URIStorage, Ownable {
         return tokenUri;
     }
 
-    // 강아지 or 아이템 민팅 (DDZ지불 or 이더지불이 필요하지만 구현단계상 프리민팅으로 설정)
-    function mint() public {
-        _mint(msg.sender, tokenId, 1, "");
+    // 강아지 or 아이템 민팅 (DDZ지불 or 이더지불이 필요하지만 구현단계상 프리민팅으로 설정, 개발편의상 onlyOwner 제거)
+    function mint(address _to) public {
+        _mint(_to, tokenId, 1, "");
         tokenId++;
     }
 }
